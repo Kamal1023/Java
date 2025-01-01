@@ -42,6 +42,24 @@ public class LinkedList{
         length++;
     }
 
+    public Node removeLast(){
+        if(length==0) return null;
+        Node temp = head;
+        Node pre = head;
+        while(temp.next!=null){
+            pre = temp;
+            temp = temp.next;
+        }
+        tail = pre;
+        tail.next = null;
+        length--;
+        if(length==0){
+            head = null;
+            tail = null;
+        }
+        return temp;
+    }
+
     public Node getHead(){
         return head;
     }
@@ -64,6 +82,14 @@ public class LinkedList{
         myLinkedList.append(2);
         myLinkedList.append(3);
         myLinkedList.append(1);
+
+        // (2) Items - Returns 2 Node
+        System.out.println(myLinkedList.removeLast().value);
+        // (1) Item - Returns 1 Node
+        System.out.println(myLinkedList.removeLast().value);
+        // (0) Items - Returns null
+        System.out.println(myLinkedList.removeLast());
+
 
 
         System.out.println("Linked List: ");
